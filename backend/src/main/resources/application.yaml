@@ -1,3 +1,40 @@
 spring:
   application:
     name: backend
+  datasource:
+    url: jdbc:mysql://localhost:3306/laundry_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: hoaian292015@gmail.com
+    password: mhwxvjsnyjnzcuoc
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+app:
+  jwt:
+    secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+    access-expiration-ms: 3600000
+  cors:
+    allowed-origins: http://localhost:5173
+  google:
+    client-id: 1069470859987-qghpt5vj0h53tp5tlejeeb099f0j64ft.apps.googleusercontent.com
+  order:
+    shipping-fee: 15000
+  store:
+    address: "180 Cao Lỗ, Phường 4, Quận 8, TP.HCM"
+  vnpay:
+    tmn-code: CGXZLS0Z
+    hash-secret: XNBCJFAKAZQSGTARRLGCHVZWCIOIGSHN
+    url: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html
+    return-url: http://localhost:8080/api/payment/vnpay-callback
