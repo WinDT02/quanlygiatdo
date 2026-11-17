@@ -63,6 +63,9 @@ public class SecurityConfig {
                         // --- public read: catalogue, promotions, reviews
                         .requestMatchers(HttpMethod.GET, "/api/services/**", "/api/promotions/**", "/api/reviews/**").permitAll()
 
+                        // --- chatbot: guests may ask too (an optional token only lets it look up the caller's own orders)
+                        .requestMatchers(HttpMethod.POST, "/api/chatbot/ask").permitAll()
+
                         // --- promotions write: /check is for any logged-in user and MUST come before the ADMIN wildcard
                         .requestMatchers(HttpMethod.POST, "/api/promotions/check").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/promotions/**").hasRole("ADMIN")
